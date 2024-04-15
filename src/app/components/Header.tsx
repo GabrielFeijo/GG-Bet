@@ -1,6 +1,7 @@
 import { Bars3Icon } from '@heroicons/react/20/solid';
-import NavBar from './NavBar';
+
 import Menu from './Menu';
+import NavBar from './NavBar';
 
 const Header = () => {
 	return (

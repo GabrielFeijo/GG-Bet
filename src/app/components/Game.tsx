@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
+
 import Card from './Card';
 import PreviousGames from './PreviousGames';
-import Timer from './Timer';
 import Tab from './Tab';
+import Timer from './Timer';
 
 const numbers = Array.from({ length: 15 }, (_, index) => index);
 

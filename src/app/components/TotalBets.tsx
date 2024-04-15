@@ -1,8 +1,10 @@
 'use client';
 import Image from 'next/image';
-import infinito from '@/app/assets/infinito.png';
-import { TabState } from './TabButton';
 import { useSearchParams } from 'next/navigation';
+
+import infinito from '@/app/assets/infinito.png';
+
+import { TabState } from './TabButton';
 
 const TotalBets = ({
 	numberOfBets,

@@ -1,5 +1,6 @@
 'use client';
-import React, { WheelEvent, useRef } from 'react';
+import React, { useRef,WheelEvent } from 'react';
+
 import Card from './Card';
 
 const PreviousGames = ({ latestGames }: { latestGames: number[] }) => {

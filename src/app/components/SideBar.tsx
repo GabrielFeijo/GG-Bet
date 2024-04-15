@@ -1,7 +1,8 @@
 'use client';
-import Image from 'next/image';
-import { sideBarItems } from '../utils/sideBarItems';
 import { useState } from 'react';
+import Image from 'next/image';
+
+import { sideBarItems } from '../utils/sideBarItems';
 
 const SideBar = () => {
 	const [selectedItem, setSelectedItem] = useState(1);

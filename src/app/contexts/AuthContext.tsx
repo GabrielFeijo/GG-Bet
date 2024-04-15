@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, createContext, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react';
 
 export interface AuthProviderProps {
 	children: ReactNode;

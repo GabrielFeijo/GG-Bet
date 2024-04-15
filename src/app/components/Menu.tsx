@@ -1,8 +1,9 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
+
 import casinoIcon from '@/app/assets/casino.png';
 import sportIcon from '@/app/assets/sport.png';
-import Image from 'next/image';
 
 const Menu = () => {
 	const [selectedItem, setSelectedItem] = useState<'casino' | 'sport'>(

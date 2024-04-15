@@ -1,13 +1,13 @@
+import coinFlip from '@/app/assets/icons/coin-flip.svg';
 import crash from '@/app/assets/icons/crash.svg';
 import crash2 from '@/app/assets/icons/crash-2.svg';
+import dice from '@/app/assets/icons/dice.svg';
 import double from '@/app/assets/icons/double.svg';
 import fortuneDouble from '@/app/assets/icons/fortune-double.svg';
+import fruits from '@/app/assets/icons/fruits.svg';
 import mines from '@/app/assets/icons/mines.svg';
-import dice from '@/app/assets/icons/dice.svg';
 import plinko from '@/app/assets/icons/plinko.svg';
 import tower from '@/app/assets/icons/tower.svg';
-import fruits from '@/app/assets/icons/fruits.svg';
-import coinFlip from '@/app/assets/icons/coin-flip.svg';
 
 export const sideBarItems = [
 	{

@@ -1,14 +1,17 @@
 'use client';
+import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+
+import info from '@/app/assets/info.png';
+import telaCheia from '@/app/assets/tela-cheia.png';
+
+import { AuthContext } from '../contexts/AuthContext';
+
 import Button from './Button';
 import SelectedColor from './SelectedColor';
 import TabButton, { TabState } from './TabButton';
 import TotalBets from './TotalBets';
-import telaCheia from '@/app/assets/tela-cheia.png';
-import info from '@/app/assets/info.png';
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
-import { useSearchParams } from 'next/navigation';
 
 const Tab = ({
 	isSpinning,
@@ -17,9 +20,6 @@ const Tab = ({
 	isSpinning: boolean;
 	result: number;
 }) => {
-	const { userInformation, setUserInformation } = useContext(AuthContext);
-	const tab: TabState = (useSearchParams().get('tab') as TabState) || 'normal';
-
 	const [betDetails, setBetDetails] = useState<{
 		isPlaying: boolean;
 		selectedColor: string;
@@ -33,6 +33,8 @@ const Tab = ({
 		bet: '',
 		error: '',
 	});
+	const tab: TabState = (useSearchParams().get('tab') as TabState) || 'normal';
+	const { userInformation, setUserInformation } = useContext(AuthContext);
 	const isDisabled = isSpinning || betDetails.isPlaying;
 
 	const labelColor =
@@ -41,52 +43,6 @@ const Tab = ({
 			: betDetails.selectedColor === 'red'
 			? 'Vermelho'
 			: 'Branco';
-
-	const toggleFullScreen = () => {
-		if (document.fullscreenElement) {
-			document.exitFullscreen();
-		} else {
-			document.body.requestFullscreen();
-		}
-	};
-
-	const handleChange = (value: string) => {
-		let error = '';
-
-		const valueAsNumber = parseInt(value);
-
-		if (valueAsNumber > userInformation.balance) {
-			error = 'Você não pode apostar mais do que seu saldo';
-		} else if (valueAsNumber <= 0) {
-			error = 'Você não pode apostar um valor menor ou igual a 0.';
-		}
-
-		setBetDetails((prev) => ({
-			...prev,
-			error: error,
-			bet: isNaN(valueAsNumber) || valueAsNumber <= 0 ? '' : value,
-		}));
-	};
-
-	const handleBet = () => {
-		if (!betDetails.bet) {
-			setBetDetails((prev) => ({
-				...prev,
-				error: 'Por favor, escolha um valor',
-			}));
-			return;
-		}
-
-		setBetDetails((prev) => ({
-			...prev,
-			isPlaying: true,
-		}));
-
-		setUserInformation((prev) => ({
-			...prev,
-			balance: prev.balance - parseInt(betDetails.bet),
-		}));
-	};
 
 	useEffect(() => {
 		if (!isSpinning && betDetails.isPlaying) {
@@ -136,6 +92,52 @@ const Tab = ({
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [setUserInformation, result, isSpinning]);
+
+	const toggleFullScreen = () => {
+		if (document.fullscreenElement) {
+			document.exitFullscreen();
+		} else {
+			document.body.requestFullscreen();
+		}
+	};
+
+	const handleChange = (value: string) => {
+		let error = '';
+
+		const valueAsNumber = parseInt(value);
+
+		if (valueAsNumber > userInformation.balance) {
+			error = 'Você não pode apostar mais do que seu saldo';
+		} else if (valueAsNumber <= 0) {
+			error = 'Você não pode apostar um valor menor ou igual a 0.';
+		}
+
+		setBetDetails((prev) => ({
+			...prev,
+			error: error,
+			bet: isNaN(valueAsNumber) || valueAsNumber <= 0 ? '' : value,
+		}));
+	};
+
+	const handleBet = () => {
+		if (!betDetails.bet || betDetails.error) {
+			setBetDetails((prev) => ({
+				...prev,
+				error: 'Por favor, escolha um valor',
+			}));
+			return;
+		}
+
+		setBetDetails((prev) => ({
+			...prev,
+			isPlaying: true,
+		}));
+
+		setUserInformation((prev) => ({
+			...prev,
+			balance: prev.balance - parseInt(betDetails.bet),
+		}));
+	};
 
 	const getWinningColor = (win: number): 'red' | 'gray' | 'white' => {
 		if (win % 2 === 0) {

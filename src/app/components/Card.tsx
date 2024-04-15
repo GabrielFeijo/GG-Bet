@@ -1,7 +1,8 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import gg from '@/app/assets/gg.png';
 import Image from 'next/image';
+import { twMerge } from 'tailwind-merge';
+
+import gg from '@/app/assets/gg.png';
 
 interface CardProps extends ComponentPropsWithoutRef<'p'> {
 	className?: string;
