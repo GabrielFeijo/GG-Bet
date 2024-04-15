@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Card from './Card';
 import PreviousGames from './PreviousGames';
-import ProgressBar from './ProgressBar';
+import Timer from './Timer';
 import Tab from './Tab';
 
 const numbers = Array.from({ length: 15 }, (_, index) => index);
@@ -113,7 +113,7 @@ const Game = () => {
 
 			<div className='grid grid-flow-row grid-rows-1'>
 				<div className='bg-selected-tab flex-1 m-4 rounded flex flex-col items-center justify-evenly overflow-hidden relative'>
-					<ProgressBar
+					<Timer
 						startGame={spin}
 						resetTimer={!betInfo.spin}
 					/>

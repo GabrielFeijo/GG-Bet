@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 import { useState, useEffect } from 'react';
 
-const ProgressBar = ({
+const Timer = ({
 	startGame,
 	resetTimer = false,
 }: {
@@ -22,11 +23,10 @@ const ProgressBar = ({
 		}, 10);
 
 		return () => clearTimeout(timer);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [timeLeft]);
 
 	useEffect(() => {
-		if (resetTimer) {
+		if (resetTimer && timeLeft === 0) {
 			const timer = setTimeout(() => {
 				setTimeLeft(totalTime);
 				clearTimeout(timer);
@@ -63,4 +63,4 @@ const ProgressBar = ({
 	);
 };
 
-export default ProgressBar;
+export default Timer;
