@@ -1,13 +1,12 @@
-import { useState } from 'react';
 import ColorButton from './ColorButton';
 
-const SelectedColor = () => {
-	const [selectedColor, setSelectedColor] = useState('white');
-
-	const setColor = (color: string) => {
-		setSelectedColor(color);
-	};
-
+const SelectedColor = ({
+	updateBetDetails,
+	selectedColor,
+}: {
+	updateBetDetails: (key: string, value: string) => void;
+	selectedColor: string;
+}) => {
 	return (
 		<div className='w-full '>
 			<p className='text-sm text-white/80 font-medium'>Selecionar Cor</p>
@@ -16,7 +15,7 @@ const SelectedColor = () => {
 				<ColorButton
 					className='bg-primary'
 					selected={selectedColor === 'red'}
-					onClick={() => setColor('red')}
+					onClick={() => updateBetDetails('selectedColor', 'red')}
 				>
 					x2
 				</ColorButton>
@@ -25,14 +24,14 @@ const SelectedColor = () => {
 						selectedColor === 'white' && 'border-primary'
 					}`}
 					selected={selectedColor === 'white'}
-					onClick={() => setColor('white')}
+					onClick={() => updateBetDetails('selectedColor', 'white')}
 				>
 					x14
 				</ColorButton>
 				<ColorButton
 					className='bg-gray'
 					selected={selectedColor === 'gray'}
-					onClick={() => setColor('gray')}
+					onClick={() => updateBetDetails('selectedColor', 'gray')}
 				>
 					x2
 				</ColorButton>

@@ -1,13 +1,17 @@
 'use client';
 import Image from 'next/image';
 import infinito from '@/app/assets/infinito.png';
-import { useState } from 'react';
 import { TabState } from './TabButton';
 import { useSearchParams } from 'next/navigation';
 
-const TotalBets = () => {
+const TotalBets = ({
+	numberOfBets,
+	updateBetDetails,
+}: {
+	numberOfBets: string;
+	updateBetDetails: (key: string, value: string) => void;
+}) => {
 	const tab: TabState = (useSearchParams().get('tab') as TabState) || 'normal';
-	const [totalBets, setTotalBets] = useState('');
 
 	return (
 		<>
@@ -17,10 +21,11 @@ const TotalBets = () => {
 						type='number'
 						className=' bg-selected-tab outline-none p-3 py-4 rounded text-white/80 text-xs font-medium'
 						placeholder='Total de Apostas'
-						onChange={(e) => setTotalBets(e.target.value)}
+						onChange={(e) => updateBetDetails('numberOfBets', e.target.value)}
+						value={numberOfBets}
 					/>
 
-					{totalBets.length <= 0 && (
+					{numberOfBets.length <= 0 && (
 						<Image
 							src={infinito}
 							alt='Simbolo de infinito'
