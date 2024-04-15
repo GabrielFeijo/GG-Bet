@@ -26,7 +26,7 @@ const ProgressBar = ({
 	}, [timeLeft]);
 
 	useEffect(() => {
-		if (resetTimer) {
+		if (resetTimer && timeLeft === 0) {
 			const timer = setTimeout(() => {
 				setTimeLeft(totalTime);
 				clearTimeout(timer);
