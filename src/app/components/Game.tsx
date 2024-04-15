@@ -112,15 +112,16 @@ const Game = () => {
 			<span className='border-l border-white/10'></span>
 
 			<div className='grid grid-flow-row grid-rows-1'>
-				<div className='bg-selected-tab flex-1 m-4 rounded relative flex items-center justify-center overflow-hidden'>
-					<div className='absolute w-full top-10'>
-						<ProgressBar
-							startGame={spin}
-							resetTimer={!betInfo.spin}
-						/>
-					</div>
+				<div className='bg-selected-tab flex-1 m-4 rounded flex flex-col items-center justify-evenly overflow-hidden relative'>
+					<ProgressBar
+						startGame={spin}
+						resetTimer={!betInfo.spin}
+					/>
+
 					<div
-						className={'grid grid-flow-col gap-4 w-full relative justify-start'}
+						className={
+							'grid grid-flow-col gap-4 w-full relative justify-start bg-red-50'
+						}
 						style={
 							betInfo.spin
 								? animation
@@ -136,7 +137,9 @@ const Game = () => {
 							/>
 						))}
 					</div>
-					<div className='w-1 h-36 bg-white absolute right-1/2 rounded py-10 top-1/2 -translate-y-1/2 z-10'></div>
+					<div className='w-1 h-36 bg-white absolute rounded left-1/2 -translate-x-1/2 mt-10'></div>
+
+					<span></span>
 				</div>
 				<PreviousGames latestGames={latestGames} />
 			</div>

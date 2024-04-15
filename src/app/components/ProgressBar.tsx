@@ -47,7 +47,7 @@ const ProgressBar = ({
 	return (
 		<>
 			{timeLeft > 0 || timeLeft === totalTime ? (
-				<div className='w-11/12 m-auto bg-secondary p-2 rounded-md relative'>
+				<div className='w-11/12 bg-secondary p-2 rounded-md relative'>
 					<p className='absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 font-bold text-xs text-white'>
 						Girando Em: {formatTime(timeLeft)}
 					</p>
@@ -57,7 +57,7 @@ const ProgressBar = ({
 					></div>
 				</div>
 			) : (
-				<p className='font-medium text-center'>Girando...</p>
+				<p className='font-medium text-center p-2'>Girando...</p>
 			)}
 		</>
 	);
