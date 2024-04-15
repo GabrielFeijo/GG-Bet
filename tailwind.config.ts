@@ -10,8 +10,7 @@ const config: Config = {
 		extend: {
 			backgroundColor: {
 				primary: '#F12C4C',
-				secondary: '#1A242D',
-				progress: '#262F3C',
+				secondary: '#262F3C',
 				gray: '#343B4A',
 				tab: '#1B242F',
 				'selected-tab': '#0F1923',

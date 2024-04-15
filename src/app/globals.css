@@ -34,3 +34,17 @@ input[type='number'] {
 	-moz-appearance: textfield;
 	appearance: textfield;
 }
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 100%;
+	background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
