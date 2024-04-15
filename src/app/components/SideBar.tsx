@@ -1,11 +1,9 @@
-'use client';
-import { useState } from 'react';
 import Image from 'next/image';
 
 import { sideBarItems } from '../utils/sideBarItems';
 
 const SideBar = () => {
-	const [selectedItem, setSelectedItem] = useState(1);
+	const selectedItem = 3;
 
 	return (
 		<aside className='w-fit border-r border-white/20 py-8 h-[calc(100vh-4.7rem)]'>
@@ -18,7 +16,9 @@ const SideBar = () => {
 								? 'border-primary '
 								: 'border-transparent'
 						}`}
-						onClick={() => setSelectedItem(item.id)}
+						title={
+							selectedItem === item.id ? item.name : 'Em desenvolvimento...'
+						}
 					>
 						<Image
 							src={item.icon}

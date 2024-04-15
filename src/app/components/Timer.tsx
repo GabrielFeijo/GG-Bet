@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-'use client';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Timer = ({
 	startGame,

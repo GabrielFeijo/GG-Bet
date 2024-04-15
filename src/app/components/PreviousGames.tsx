@@ -1,5 +1,4 @@
-'use client';
-import React, { useRef,WheelEvent } from 'react';
+import { useRef, WheelEvent } from 'react';
 
 import Card from './Card';
 
